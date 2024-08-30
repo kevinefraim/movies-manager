@@ -25,6 +25,26 @@ export class MoviesService {
   private movieEntity: PrismaClient['movie'] = this.prisma.movie;
   private apiUrl = this.config.get('STAR_WARS_API_URL');
 
+  async syncMoviesFromApi() {
+    const apiMovies = await this.findAllFromApi();
+
+    const promises = apiMovies.map(async apiMovie => {
+      const existingMovie = await this.prisma.movie.findUnique({
+        where: { episodeId: apiMovie.episode_id },
+      });
+
+      if (!existingMovie) {
+        await this.prisma.movie.create({
+          data: this.formatMovie(apiMovie),
+        });
+      }
+    });
+
+    await Promise.all(promises);
+
+    return { message: 'Movies synchronized successfully' };
+  }
+
   async findAllFromApi(): Promise<MoviesApi[]> {
     try {
       const response: AxiosResponse<MoviesApiResponse> = await firstValueFrom(

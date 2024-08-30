@@ -1,3 +1,5 @@
+import { Movie } from '@prisma/client';
+
 export type MoviesApiResponse = {
   count: number;
   next: string | null;
@@ -21,3 +23,5 @@ export type MoviesApi = {
   url: string;
   vehicles: string[];
 };
+
+export type MovieDB = Movie;
