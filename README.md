@@ -1,8 +1,8 @@
 ## Star Wars - Movie Manager
 
 ### Swagger
-Swagger Docs: 
-http://localhost:3001/api/docs (local)
+Swagger Docs:\
+http://localhost:3001/api/docs (local)\
 https://movies-manager-d30g.onrender.com/api/docs (production)
 
 ### Installation
@@ -56,8 +56,3 @@ $ npm run start:prod
 # Prisma studio
 $ npm run studio
 ```
-
-### After login
-
-- Get token from response
-- Send it in Authorization header like: Bearer {{token}}
