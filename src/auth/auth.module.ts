@@ -6,7 +6,7 @@ import { JwtModule } from '@nestjs/jwt';
 import { APP_GUARD } from '@nestjs/core';
 import { AuthGuard } from 'common/guards/auth.guard';
 import { RoleGuard } from 'common/guards/role.guard';
-import { jwtConstants } from 'auth/auth.constants';
+import { jwtConstants } from 'auth/constants/auth.constants';
 
 @Module({
   imports: [

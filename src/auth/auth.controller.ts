@@ -1,24 +1,14 @@
-import {
-  Body,
-  Controller,
-  Get,
-  HttpCode,
-  Post,
-  Req,
-  Request,
-  UseGuards,
-} from '@nestjs/common';
-import { CreateUserDto } from 'auth/dto/create-user.dto';
+import { Body, Controller, HttpCode, Post } from '@nestjs/common';
 import { ApiTags, ApiOperation, ApiResponse } from '@nestjs/swagger';
+import { CreateUserDto } from 'auth/dto/create-user.dto';
 import { SigninDto } from 'auth/dto/signin-dto';
 import { AuthService } from 'auth/auth.service';
 import { Public } from 'common/decorators/public.decorator';
-import { Throttle } from '@nestjs/throttler';
 
 @ApiTags('Auth')
 @Controller('auth')
 export class AuthController {
-  constructor(private authService: AuthService) {}
+  constructor(private readonly authService: AuthService) {}
 
   @Public()
   @Post('login')

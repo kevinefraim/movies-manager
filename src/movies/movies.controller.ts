@@ -12,8 +12,6 @@ import { MoviesService } from 'movies/movies.service';
 import { CreateMovieFromApiDto } from 'movies/dto/create-movie-from-api.dto';
 import { UpdateMovieDto } from 'movies/dto/update-movie.dto';
 import { CreateMovieDto } from 'movies/dto/create-movie.dto';
-import { Public } from 'common/decorators/public.decorator';
-import { Role } from 'common/decorators/role.decorator';
 import {
   ApiTags,
   ApiOperation,
@@ -21,12 +19,15 @@ import {
   ApiResponse,
 } from '@nestjs/swagger';
 import { MovieEntity } from 'movies/entities/movie.entity';
+import { Role } from 'common/decorators/role.decorator';
+import { Public } from 'common/decorators/public.decorator';
 
 @ApiTags('Movies')
 @Controller('movies')
 export class MoviesController {
   constructor(private readonly moviesService: MoviesService) {}
 
+  // Get details of a specific movie
   @Role('REGULAR')
   @ApiBearerAuth()
   @ApiOperation({ summary: 'Get details of a specific movie' })
@@ -37,6 +38,7 @@ export class MoviesController {
     return this.moviesService.findOne(id);
   }
 
+  // Get a list of all movies
   @Public()
   @ApiOperation({ summary: 'Get a list of all movies' })
   @ApiResponse({
@@ -49,6 +51,7 @@ export class MoviesController {
     return this.moviesService.findAll();
   }
 
+  // Create a new movie from the Star Wars API by episode ID
   @Role('ADMIN')
   @ApiBearerAuth()
   @ApiOperation({
@@ -66,6 +69,7 @@ export class MoviesController {
     return this.moviesService.createFromApi(dto);
   }
 
+  // Create a new movie manually
   @Role('ADMIN')
   @ApiBearerAuth()
   @ApiOperation({ summary: 'Create a new movie manually' })
@@ -80,6 +84,7 @@ export class MoviesController {
     return this.moviesService.createNewMovie(dto);
   }
 
+  // Update details of an existing movie
   @Role('ADMIN')
   @ApiBearerAuth()
   @ApiOperation({ summary: 'Update details of an existing movie' })
@@ -95,6 +100,7 @@ export class MoviesController {
     return this.moviesService.update(dto, id);
   }
 
+  // Delete a movie by ID
   @Role('ADMIN')
   @ApiBearerAuth()
   @ApiOperation({ summary: 'Delete a movie by ID' })
@@ -105,6 +111,7 @@ export class MoviesController {
     return this.moviesService.delete(id);
   }
 
+  // Sync movies from Star Wars API to the database
   @Role('ADMIN')
   @ApiBearerAuth()
   @ApiOperation({ summary: 'Sync movies from Star Wars API to the database' })
