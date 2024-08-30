@@ -5,10 +5,10 @@ import {
 } from '@nestjs/common';
 import * as argon from 'argon2';
 import { JwtService } from '@nestjs/jwt';
-import { CreateUserDto } from 'src/auth/dto/create-user.dto';
+import { CreateUserDto } from 'auth/dto/create-user.dto';
 import { User } from '@prisma/client';
-import { SigninDto } from 'src/auth/dto/signin-dto';
-import { UsersService } from 'src/users/users.service';
+import { SigninDto } from 'auth/dto/signin-dto';
+import { UsersService } from 'users/users.service';
 
 @Injectable()
 export class AuthService {

@@ -1,14 +1,14 @@
 import { Body, Controller, Get, Post, Req, Request } from '@nestjs/common';
-import { CreateUserDto } from 'src/auth/dto/create-user.dto';
+import { CreateUserDto } from 'auth/dto/create-user.dto';
 import {
   ApiTags,
   ApiOperation,
   ApiBearerAuth,
   ApiResponse,
 } from '@nestjs/swagger';
-import { SigninDto } from 'src/auth/dto/signin-dto';
-import { AuthService } from 'src/auth/auth.service';
-import { Public } from 'src/auth/decorators/public.decorator';
+import { SigninDto } from 'auth/dto/signin-dto';
+import { AuthService } from 'auth/auth.service';
+import { Public } from 'auth/decorators/public.decorator';
 
 @ApiTags('Auth')
 @Controller('auth')

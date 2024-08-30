@@ -8,19 +8,19 @@ import {
   Post,
   Put,
 } from '@nestjs/common';
-import { MoviesService } from 'src/movies/movies.service';
-import { CreateMovieFromApiDto } from 'src/movies/dto/create-movie-from-api.dto';
-import { UpdateMovieDto } from 'src/movies/dto/update-movie.dto';
-import { CreateMovieDto } from 'src/movies/dto/create-movie.dto';
-import { Public } from 'src/auth/decorators/public.decorator';
-import { Role } from 'src/auth/decorators/role.decorator';
+import { MoviesService } from 'movies/movies.service';
+import { CreateMovieFromApiDto } from 'movies/dto/create-movie-from-api.dto';
+import { UpdateMovieDto } from 'movies/dto/update-movie.dto';
+import { CreateMovieDto } from 'movies/dto/create-movie.dto';
+import { Public } from 'auth/decorators/public.decorator';
+import { Role } from 'auth/decorators/role.decorator';
 import {
   ApiTags,
   ApiOperation,
   ApiBearerAuth,
   ApiResponse,
 } from '@nestjs/swagger';
-import { MovieEntity } from 'src/movies/entities/movie.entity';
+import { MovieEntity } from 'movies/entities/movie.entity';
 
 @ApiTags('Movies')
 @Controller('movies')

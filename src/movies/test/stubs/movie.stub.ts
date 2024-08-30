@@ -1,26 +1,26 @@
-import { CreateMovieDto } from 'src/movies/dto/create-movie.dto';
+import { CreateMovieDto } from 'movies/dto/create-movie.dto';
 
 export const movies = [
   {
     id: 1,
-    createdAt: new Date(),
-    updatedAt: new Date(),
+    createdAt: new Date('2021-01-01'),
+    updatedAt: new Date('2021-01-01'),
     title: 'Movie Title',
     episodeId: 1,
     director: 'Director Name',
     producer: 'Producer Name',
-    releaseDate: new Date(),
+    releaseDate: new Date('2021-01-01'),
     openingCrawl: 'Opening Crawl Content',
   },
   {
     id: 2,
-    createdAt: new Date(),
-    updatedAt: new Date(),
+    createdAt: new Date('2021-01-01'),
+    updatedAt: new Date('2021-01-01'),
     title: 'Another Movie Title',
     episodeId: 2,
     director: 'Another Director Name',
     producer: 'Another Producer Name',
-    releaseDate: new Date(),
+    releaseDate: new Date('2021-01-01'),
     openingCrawl: 'Another Opening Crawl Content',
   },
 ];
