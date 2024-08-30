@@ -5,6 +5,10 @@ Swagger Docs:\
 http://localhost:3001/api/docs (local)\
 https://movies-manager-d30g.onrender.com/api/docs (production)
 
+Agregar Bearer token en Swagger:\
+![image](https://github.com/user-attachments/assets/a2a36c5c-4d47-4efd-869f-2a3eedc364ec)
+
+
 ### Installation
 
 ```bash
