@@ -3,12 +3,12 @@ import {
   Injectable,
   UnauthorizedException,
 } from '@nestjs/common';
-import { UsersService } from '../users/users.service';
-import { SigninDto } from 'src/users/dto/signin-dto';
 import * as argon from 'argon2';
 import { JwtService } from '@nestjs/jwt';
-import { CreateUserDto } from 'src/users/dto/create-user.dto';
+import { CreateUserDto } from 'src/auth/dto/create-user.dto';
 import { User } from '@prisma/client';
+import { SigninDto } from 'src/auth/dto/signin-dto';
+import { UsersService } from 'src/users/users.service';
 
 @Injectable()
 export class AuthService {
@@ -26,15 +26,16 @@ export class AuthService {
 
   async signIn(dto: SigninDto) {
     const foundUser = await this.usersService.findOne(dto.username);
-    if (!foundUser) throw new UnauthorizedException();
+    if (!foundUser)
+      throw new UnauthorizedException('Invalid username or password.');
 
     const isValidPassword = await argon.verify(
       foundUser.password,
       dto.password,
     );
-    if (!isValidPassword) throw new UnauthorizedException();
+    if (!isValidPassword)
+      throw new UnauthorizedException('Invalid username or password.');
 
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const { password, ...user } = foundUser;
     const token = await this.generateJwt(user);
 
@@ -43,7 +44,7 @@ export class AuthService {
 
   async signUp(dto: CreateUserDto) {
     const checkUser = await this.usersService.findOne(dto.username);
-    if (checkUser) throw new BadRequestException('User already exists');
+    if (checkUser) throw new BadRequestException('User already exists.');
 
     const hashedPassword = await argon.hash(dto.password);
 
@@ -52,7 +53,6 @@ export class AuthService {
       password: hashedPassword,
     });
 
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const { password, ...user } = newUser;
     const token = await this.generateJwt(user);
 

@@ -2,7 +2,7 @@ import {
   Injectable,
   CanActivate,
   ExecutionContext,
-  BadRequestException,
+  ForbiddenException,
 } from '@nestjs/common';
 import { Reflector } from '@nestjs/core';
 import { Role } from '@prisma/client';
@@ -24,8 +24,11 @@ export class RoleGuard implements CanActivate {
 
     const hasRole = requiredRole === user.role;
 
-    if (!hasRole)
-      throw new BadRequestException('You are not authorized to do this action');
+    if (!hasRole) {
+      throw new ForbiddenException(
+        'You do not have the required role to perform this action.',
+      );
+    }
 
     return true;
   }
