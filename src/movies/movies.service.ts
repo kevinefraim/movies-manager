@@ -6,14 +6,14 @@ import {
 } from '@nestjs/common';
 import { AxiosResponse } from 'axios';
 import { firstValueFrom } from 'rxjs';
-import { MoviesApi, MoviesApiResponse } from './types/movies.types';
 import { ConfigService } from '@nestjs/config';
-import { FILMS_ENDPOINT } from './constants';
-import { PrismaService } from '../prisma/prisma.service';
 import { Movie, PrismaClient } from '@prisma/client';
-import { CreateMovieFromApiDto } from './dto/create-movie-from-api.dto';
-import { UpdateMovieDto } from './dto/update-movie.dto';
-import { CreateMovieDto } from './dto/create-movie.dto';
+import { PrismaService } from 'prisma/prisma.service';
+import { MoviesApi, MoviesApiResponse } from 'movies/types/movies.types';
+import { FILMS_ENDPOINT } from 'movies/movies.constants';
+import { CreateMovieFromApiDto } from 'movies/dto/create-movie-from-api.dto';
+import { CreateMovieDto } from 'movies/dto/create-movie.dto';
+import { UpdateMovieDto } from 'movies/dto/update-movie.dto';
 
 @Injectable()
 export class MoviesService {

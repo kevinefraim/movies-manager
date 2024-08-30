@@ -12,8 +12,8 @@ import { MoviesService } from 'movies/movies.service';
 import { CreateMovieFromApiDto } from 'movies/dto/create-movie-from-api.dto';
 import { UpdateMovieDto } from 'movies/dto/update-movie.dto';
 import { CreateMovieDto } from 'movies/dto/create-movie.dto';
-import { Public } from 'auth/decorators/public.decorator';
-import { Role } from 'auth/decorators/role.decorator';
+import { Public } from 'common/decorators/public.decorator';
+import { Role } from 'common/decorators/role.decorator';
 import {
   ApiTags,
   ApiOperation,

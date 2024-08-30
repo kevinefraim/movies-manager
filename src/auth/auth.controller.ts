@@ -6,17 +6,14 @@ import {
   Post,
   Req,
   Request,
+  UseGuards,
 } from '@nestjs/common';
 import { CreateUserDto } from 'auth/dto/create-user.dto';
-import {
-  ApiTags,
-  ApiOperation,
-  ApiBearerAuth,
-  ApiResponse,
-} from '@nestjs/swagger';
+import { ApiTags, ApiOperation, ApiResponse } from '@nestjs/swagger';
 import { SigninDto } from 'auth/dto/signin-dto';
 import { AuthService } from 'auth/auth.service';
-import { Public } from 'auth/decorators/public.decorator';
+import { Public } from 'common/decorators/public.decorator';
+import { Throttle } from '@nestjs/throttler';
 
 @ApiTags('Auth')
 @Controller('auth')

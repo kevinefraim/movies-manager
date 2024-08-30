@@ -4,6 +4,7 @@ import { ValidationPipe } from '@nestjs/common';
 import { useContainer } from 'class-validator';
 import { PrismaClientExceptionFilter } from 'nestjs-prisma';
 import { SwaggerModule, DocumentBuilder } from '@nestjs/swagger';
+import { HttpExceptionFilter } from 'common/filters/http-exception.filter';
 
 const PORT = process.env.PORT || 3001;
 const API_URL = process.env.API_URL || 'http://localhost:3001';
@@ -14,6 +15,8 @@ async function bootstrap() {
       credentials: false,
     },
   });
+
+  app.useGlobalFilters(new HttpExceptionFilter());
 
   const config = new DocumentBuilder()
     .setTitle('Movie Management API')
