@@ -94,7 +94,6 @@ export class MoviesService {
     return this.movieEntity.findMany();
   }
 
-  //Create a movie with the episode id from the api
   async createFromApi({ episodeId }: CreateMovieFromApiDto) {
     const dbMovie = await this.movieEntity.findUnique({ where: { episodeId } });
     if (dbMovie) {
@@ -120,7 +119,6 @@ export class MoviesService {
       throw new BadRequestException('There is a movie with this episode');
     }
 
-    //Always have to find all because the api does not retrieve the id so the user will never know how to find it
     const apiMovies = await this.findAllFromApi();
     const apiMovie = apiMovies.some(
       movie => movie.episode_id === dto.episodeId,
