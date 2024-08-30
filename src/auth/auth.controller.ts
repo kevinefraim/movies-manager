@@ -1,4 +1,12 @@
-import { Body, Controller, Get, Post, Req, Request } from '@nestjs/common';
+import {
+  Body,
+  Controller,
+  Get,
+  HttpCode,
+  Post,
+  Req,
+  Request,
+} from '@nestjs/common';
 import { CreateUserDto } from 'auth/dto/create-user.dto';
 import {
   ApiTags,
@@ -17,6 +25,7 @@ export class AuthController {
 
   @Public()
   @Post('login')
+  @HttpCode(200)
   @ApiOperation({ summary: 'User login' })
   @ApiResponse({ status: 200, description: 'User successfully logged in' })
   @ApiResponse({ status: 401, description: 'Unauthorized' })
