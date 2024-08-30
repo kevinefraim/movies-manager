@@ -6,6 +6,7 @@ import { PrismaClientExceptionFilter } from 'nestjs-prisma';
 import { SwaggerModule, DocumentBuilder } from '@nestjs/swagger';
 
 const PORT = process.env.PORT || 3001;
+const API_URL = process.env.API_URL || 'http://localhost:3001';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule, {
@@ -37,10 +38,8 @@ async function bootstrap() {
   app.useGlobalFilters(new PrismaClientExceptionFilter(httpAdapter));
 
   await app.listen(PORT);
-  console.log(`Server initialized on port ${PORT}`);
-  console.log(
-    `Swagger API documentation available at http://localhost:${PORT}/api/docs`,
-  );
+  console.log(`Server initialized on ${API_URL}`);
+  console.log(`Swagger API documentation available at ${API_URL}/api/docs`);
 }
 
 bootstrap();

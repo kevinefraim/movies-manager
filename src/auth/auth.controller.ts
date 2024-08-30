@@ -9,7 +9,6 @@ import {
 import { SigninDto } from 'src/auth/dto/signin-dto';
 import { AuthService } from 'src/auth/auth.service';
 import { Public } from 'src/auth/decorators/public.decorator';
-import { Role } from 'src/auth/decorators/role.decorator';
 
 @ApiTags('Auth')
 @Controller('auth')
