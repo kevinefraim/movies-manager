@@ -1,7 +1,9 @@
 ## Star Wars - Movie Manager
 
 ### Swagger
-Swagger Docs: http://localhost:3001/api/docs 
+Swagger Docs: 
+http://localhost:3001/api/docs (local)
+https://movies-manager-d30g.onrender.com/api/docs (production)
 
 ### Installation
 
