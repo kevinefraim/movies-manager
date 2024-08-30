@@ -12,10 +12,9 @@ export class AppController {
     <h1 style="color: #fff;">Welcome!</h1>
   </head>
   <body>
-    <h2 style="color: #fff;">List of Endpoints</h2>
+    <h2 style="color: #fff;">Go to Swagger Docs</h2>
     <ul style="font-size: 18px; font-weight: bold;">
-      <li><a style="color: #fff;" href="/auth">/auth</a></li>
-      <li><a style="color: #fff;" href="/movies">/movies</a></li>
+      <li><a style="color: #fff;" href="/api/docs">/Swagger</a></li>
     </ul>
   </body>
 </html>
